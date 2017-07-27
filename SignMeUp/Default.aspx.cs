@@ -13,5 +13,14 @@ namespace SignMeUp
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if(txtUsername.Text=="manager" && txtPassword.Text=="password")
+            {
+                Session["isLoggedIn"] = true;
+                Response.Redirect("ViewOvertime.aspx");
+            }
+        }
     }
 }

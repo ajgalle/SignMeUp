@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-
+using System.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,28 +20,55 @@ namespace SignMeUp
 
         protected void btnNewOvertime_Click(object sender, EventArgs e)
         {
-
-            string connString = @"Data Source=DESKTOP-DARBDT6\SQLEXPRESS;Initial Catalog=SignMeUpLocal;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            string queryString = "INSERT INTO Overtime (OvertimeDate,HoursBegin,HoursEnd,Deadline,Location,StillAdvertise,InterestedEmployees) VALUES (@OVertimeDate,@HoursBegin,@HoursEnd,@Deadline,@Location,@StillAdvertise,@InterestedEmployees)";
-
-            using (SqlConnection conn = new SqlConnection(connString))
+            if (Page.IsValid)
             {
-                using (SqlCommand cmd = new SqlCommand(queryString, conn))
-                {
-                    conn.Open();
-                    // THis is to avoid SQL Injection problems; we first declared @parameters in the command line, so these are adding to their values.
-                    cmd.Parameters.Add("@OvertimeDate", SqlDbType.NChar).Value = OvertimeDate.Text;
-                    cmd.Parameters.Add("@HoursBegin", SqlDbType.NChar).Value = HoursBegin.Text;
-                    cmd.Parameters.Add("@HoursEnd", SqlDbType.NChar).Value = HoursEnd.Text;
-                    cmd.Parameters.Add("@Deadline", SqlDbType.NChar).Value = Deadline.Text;
-                    cmd.Parameters.Add("@Location", SqlDbType.NChar).Value = Location.Text;
-                    cmd.Parameters.Add("@StillAdvertise", SqlDbType.Bit).Value = true;
-                    cmd.Parameters.Add("@InterestedEmployees", SqlDbType.NChar).Value = "";
+                string connString = ConfigurationManager.ConnectionStrings["SignMeUpConnectionString"].ConnectionString;
 
-                    cmd.ExecuteNonQuery();
+                string queryString = "INSERT INTO Overtime (OvertimeDate,HoursBegin,HoursEnd,Deadline,Location,StillAdvertise,InterestedEmployees,FilledYet,PhotoPath) VALUES (@OVertimeDate,@HoursBegin,@HoursEnd,@Deadline,@Location,@StillAdvertise,@InterestedEmployees,@FilledYet, @PhotoPath)";
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(queryString, conn))
+                    {
+                        conn.Open();
+                        // This is to avoid SQL Injection problems; we first declared @parameters in the command line, so these are adding to their values.
+                        cmd.Parameters.Add("@OvertimeDate", SqlDbType.NChar).Value = OvertimeDate.Text;
+                        cmd.Parameters.Add("@HoursBegin", SqlDbType.NChar).Value = HoursBegin.Text;
+                        cmd.Parameters.Add("@HoursEnd", SqlDbType.NChar).Value = HoursEnd.Text;
+                        cmd.Parameters.Add("@Deadline", SqlDbType.NChar).Value = Deadline.Text;
+                        cmd.Parameters.Add("@Location", SqlDbType.NChar).Value = dropdownLocation.Text;
+                        cmd.Parameters.Add("@StillAdvertise", SqlDbType.NChar).Value = true;
+                        cmd.Parameters.Add("@InterestedEmployees", SqlDbType.NChar).Value = "";
+                        cmd.Parameters.Add("@FilledYet", SqlDbType.Bit).Value = false;
+                        // Based on location, we need to tell the database where the gridview will eventually find the photopath, so we'll use a Switch/Case;
+                        string PhotoPath;
+                        switch (dropdownLocation.Text)
+                        {
+                            case "Virginia Beach":
+                                PhotoPath = "~/images/vabeach.jpg";
+                                break;
+                            case "Accomack":
+                                PhotoPath = "~/images/accomack.jpg";
+                                break;
+                            case "NorthHampton":
+                                PhotoPath = "~/images/northhampton.jpg";
+                                break;
+                            case "Portsmouth":
+                                PhotoPath = "~/images/portsmouth.jpg";
+                                break;
+                            case "Norfolk":
+                                PhotoPath = "~/images/norfolk.jpg";
+                                break;
+                            default:
+                                PhotoPath = "~/images/happyRobot.jpg";
+                                break;
+                        }
+                        cmd.Parameters.Add("@PhotoPath", SqlDbType.NChar).Value = PhotoPath;
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                Response.Redirect("ManageOvertime.aspx");
             }
-            Response.Redirect("ViewOvertime.aspx");
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)

@@ -10,7 +10,7 @@
 namespace SignMeUp {
     
     
-    public partial class _Default {
+    public partial class index {
         
         /// <summary>
         /// txtUsername control.

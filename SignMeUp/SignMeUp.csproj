@@ -136,7 +136,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -151,6 +150,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="default.aspx" />
+    <Content Include="ManagerMaster.Master" />
     <None Include="Properties\PublishProfiles\signmeup - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\signmeup - Web Deploy.pubxml" />
     <Content Include="images\happyRobot.jpg" />
@@ -158,7 +159,10 @@
     <Content Include="images\portsmouth.jpg" />
     <Content Include="images\vabeach.jpg" />
     <Content Include="hireWorkers.aspx" />
-    <Content Include="manageOvertime.aspx" />
+    <Content Include="ManageOvertime.aspx" />
+    <Content Include="managerMenu.aspx" />
+    <Content Include="myOvertime.aspx" />
+    <Content Include="registration.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -218,13 +222,6 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,14 +232,49 @@
     <Compile Include="hireWorkers.aspx.designer.cs">
       <DependentUpon>hireWorkers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="manageOvertime.aspx.cs">
-      <DependentUpon>manageOvertime.aspx</DependentUpon>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="manageOvertime.aspx.designer.cs">
-      <DependentUpon>manageOvertime.aspx</DependentUpon>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageOvertime.aspx.cs">
+      <DependentUpon>ManageOvertime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageOvertime.aspx.designer.cs">
+      <DependentUpon>ManageOvertime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerMaster.Master.cs">
+      <DependentUpon>ManagerMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerMaster.Master.designer.cs">
+      <DependentUpon>ManagerMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="managerMenu.aspx.cs">
+      <DependentUpon>managerMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managerMenu.aspx.designer.cs">
+      <DependentUpon>managerMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="myOvertime.aspx.cs">
+      <DependentUpon>myOvertime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="myOvertime.aspx.designer.cs">
+      <DependentUpon>myOvertime.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="registration.aspx.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registration.aspx.designer.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

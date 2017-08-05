@@ -7,19 +7,25 @@ using System.Web.UI.WebControls;
 
 namespace SignMeUp
 {
-    public partial class _Default : Page
+    public partial class index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if(txtUsername.Text=="manager" && txtPassword.Text=="password")
+            if (txtUsername.Text == "manager" && txtPassword.Text == "password")
             {
                 Session["isLoggedIn"] = true;
-                Response.Redirect("ViewOvertime.aspx");
+                Session["isManager"] = true;
+                Response.Redirect("managerMenu.aspx");
+            }
+            else if (txtUsername.Text == "user" && txtPassword.Text == "password")
+            {
+                Session["isLoggedIn"] = true;
+                Session["isManager"] = false;
+                Response.Redirect("myOvertime.aspx");
             }
         }
     }

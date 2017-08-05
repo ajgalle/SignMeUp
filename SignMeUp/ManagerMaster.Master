@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SignMeUp.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ManagerMaster.master.cs" Inherits="SignMeUp.ManagerMaster" %>
 
 <!DOCTYPE html>
 
@@ -15,8 +15,8 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
 </head>
+
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
@@ -52,8 +52,8 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/ViewOvertime.aspx">View Available Overtime</a></li>
-                        <li><a runat="server" href="~/myOvertime.aspx">View Overtime I've Applied For</a></li>
+                        <li><a runat="server" href="~/manageOvertime.aspx">View or Cancel Available Overtime</a></li>
+                        <li><a runat="server" href="~/addMenu.aspx">Add New Overtime</a></li>
                         <li><a runat="server" href="~/FAQ.aspx">Overtime F.A.Q.s</a></li>
                     </ul>
                 </div>
@@ -71,3 +71,4 @@
     </form>
 </body>
 </html>
+

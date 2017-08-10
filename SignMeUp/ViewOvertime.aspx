@@ -4,7 +4,8 @@
     <div class="container-fluid centered">
         <h2>Current Opportunities</h2>
 
-        <asp:GridView ID="GridView1" AutoGenerateColumns="False" runat="server" GridLines="None" ShowHeader="False">
+        <asp:TextBox ID="TestItOut" runat="server" Text="Try it!"></asp:TextBox>
+        <asp:GridView ID="GridView1" AutoGenerateColumns="False" runat="server" GridLines="None" ShowHeader="False" >
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
@@ -13,7 +14,8 @@
                                 <tr>                            
                                 <td style="width: 200px;">
                                     <asp:Image ID="imgOvertime" ImageURL='<%# Eval("PhotoPath") %>' runat="server" /><br />
-                                     <div class="text-center" style="padding:10px;">    <asp:CheckBox runat="server" /> <p style="color:blue"> Check here to sign up! </p></div>
+                                     <div class="text-center" style="padding:10px;">
+                                     <asp:CheckBox ID="chkSelect" runat="server" /> <p style="color:blue"> Check here to sign up! </p></div>
                                 </td>
                                                             
                              <td style="width: 200px">
@@ -28,6 +30,8 @@
                                         </tr>
                                         <tr>
                                             <td>
+                                                <!--I want to grab the OvertimeID when the check the box, so I'll store that here but the user can't see it -->
+                                                <asp:Label ID="lblOvertimeID" runat="server" Text='<%#Eval("OvertimeID") %>' Visible="false"></asp:Label>
                                                 <b>Overtime Date:</b>
                                             </td>
                                             <td>
@@ -73,7 +77,7 @@
 
             <div id="bot-box">
                 <p id="bot-bubble">
-                Hello Management Team Member!<br />
+                Hello Employee!<br />
                 <br />
                 If you're here to manage overtime opportunities, please click <a href="manageOvertime.aspx">here.</a>
             </p>
@@ -81,10 +85,10 @@
         </div>
 
         <br />
-        <asp:Button ID="requestOvertime" runat="server" CssClass="btn-primary" Text="Submit Requested Ovetime" />
+        <asp:Button ID="requestOvertime" runat="server" CssClass="btn-primary" Text="Submit Requested Ovetime" OnClick="requestOvertime_Click"/>
         <br />
         <p>
-            <asp:CheckBox ID="understood" runat="server" OnCheckedChanged="understood_CheckedChanged" />
+            <asp:CheckBox ID="understood" runat="server"/>
             I understand <a href="faq.aspx">how overtime works.</a>
         </p>
     </div>

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Add new user" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="registration.aspx.cs" Inherits="SignMeUp.register" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
 
     <br />
@@ -35,10 +35,10 @@
     <br />
     <br />
     <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Register" OnClick="btnSubmit_Click" />
-
+    <asp:Label ID="lblEmailAlreadyInUse" runat="server" Text=""></asp:Label>
      <div  id="bot-box">
             <p class="happyBotBubble"> Please remember your password! If you forget it, you will have to create a new account and your old data will be lost! <a href="manageOvertime.aspx">here.</a></p>
             <img src="images/happyRobot.jpg" alt="Helper Bot" />
         </div>
+    </asp:Content>
 
-</asp:Content>
